@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
+import { useState } from 'react';
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -23,6 +23,9 @@ export default function Authenticated({ user, header, children }) {
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
+                                </NavLink>
+                                <NavLink href={route('folders.index')} active={route().current('folders.index')}>
+                                    Folders
                                 </NavLink>
                             </div>
                         </div>
@@ -94,6 +97,9 @@ export default function Authenticated({ user, header, children }) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('folders.index')} active={route().current('folders.index')}>
+                            Folders
                         </ResponsiveNavLink>
                     </div>
 

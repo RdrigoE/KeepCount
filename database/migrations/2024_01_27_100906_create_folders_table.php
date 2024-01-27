@@ -16,10 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignIdFor(Folder::class, 'folder_id')
+                ->nullable()
                 ->constrained()
                 ->cascadeOnDelete()
-                ->cascadeOnUpdate()
-                ->nullable();
+                ->cascadeOnUpdate();
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnDelete();
