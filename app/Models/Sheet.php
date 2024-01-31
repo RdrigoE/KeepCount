@@ -11,7 +11,7 @@ class Sheet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'folder_id'];
 
     public function folder(): BelongsTo
     {

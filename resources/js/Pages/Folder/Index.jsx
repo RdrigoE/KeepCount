@@ -3,12 +3,13 @@ import CreateNewSheet from "@/Components/CreateNewSheet";
 import { FilePlusIcon } from "@/Components/FilePlusIcon";
 import FolderCard from "@/Components/FolderCard";
 import GoBackButton from "@/Components/GoBackButton";
+import SheetCard from "@/Components/SheetCard";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Button } from "@/shadcn/ui/button";
 import { Head, useForm } from '@inertiajs/react';
 import { useState } from "react";
 
-export default function Index({ auth, folder, canMakeSheet, folders }) {
+export default function Index({ auth, folder, canMakeSheet, folders, sheets }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         name: '',
         folder_id: folder?.id
@@ -46,10 +47,8 @@ export default function Index({ auth, folder, canMakeSheet, folders }) {
 
                     {canMakeSheet ? creatingSheet
                         ?
-
                         <CreateNewSheet folder={folder} setCreatingSheet={setCreatingSheet} />
                         :
-
                         <Button className="w-full" variant="outline" onClick={(e) => setCreatingSheet(true)}>
                             <FilePlusIcon className="mr-2 h-5 w-5" />
                             Add New Sheet
@@ -61,6 +60,9 @@ export default function Index({ auth, folder, canMakeSheet, folders }) {
                     {folders.map(folder =>
                         <FolderCard key={folder.id} folder={folder} />
                     )}
+                    {sheets ? sheets.map(sheet =>
+                        <SheetCard key={sheet.id} sheet={sheet} />
+                    ) : ''}
                 </div>
             </div>
         </AuthenticatedLayout >

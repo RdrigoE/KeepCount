@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\EntryController;
 use App\Http\Controllers\FolderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SheetController;
+use App\Models\Entry;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,5 +42,13 @@ Route::middleware('auth')->group(function () {
 Route::resource('folders', FolderController::class)
     ->only(['index', 'show', 'store'])
     ->middleware(['auth', 'verified']);
+Route::resource('sheets', SheetController::class)
+    ->only(['index', 'show', 'store'])
+    ->middleware(['auth', 'verified']);
+Route::resource('entries', EntryController::class)
+    ->only(['index', 'show', 'store'])
+    ->middleware(['auth', 'verified']);
+
+
 
 require __DIR__ . '/auth.php';

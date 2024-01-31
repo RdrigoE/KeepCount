@@ -56,6 +56,7 @@ class FolderController extends Controller
                 'folder' => $folder,
                 'canMakeSheet' => true,
                 'folders' => $folder->folders()->get(),
+                'sheets' => $folder->sheets()->get(),
             ],
         );
     }
