@@ -10,7 +10,7 @@ class Entry extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['item', 'quantity', 'product'];
+    protected $fillable = ['item', 'quantity', 'price'];
 
     public function sheet(): BelongsTo
     {

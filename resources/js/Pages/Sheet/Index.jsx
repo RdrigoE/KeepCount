@@ -1,6 +1,8 @@
 import { CheckIcon } from "@/Components/CheckIcon";
 import { FolderPlusIcon } from '@/Components/FolderPlusIcon';
 import InputError from '@/Components/InputError';
+import { columns } from '@/Components/table_entries/columns';
+import { DataTable } from "@/Components/table_entries/data-table";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Button } from "@/shadcn/ui/button";
 import { Input } from "@/shadcn/ui/input";
@@ -67,9 +69,10 @@ export default function Index({ auth, sheet, entries }) {
                     </div>
                 </form>
                 <div>
-                    {
-                        entries.map(entry => <p key={entry.id}>{entry.item}</p>)
-                    }
+
+                    <div className="container mx-auto py-10">
+                        <DataTable columns={columns} data={entries} />
+                    </div>
 
                 </div>
             </div>

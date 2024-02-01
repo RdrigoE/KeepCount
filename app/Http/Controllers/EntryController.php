@@ -31,7 +31,7 @@ class EntryController extends Controller
     {
         $validated = $request->validate([
             'item' => 'string|max:255|min:3',
-            'price' => 'decimal:2',
+            'price' => 'required|numeric|between:1,99999999999999',
             'quantity' => 'int',
             'sheet_id' => 'int'
         ]);
