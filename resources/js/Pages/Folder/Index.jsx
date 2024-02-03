@@ -60,8 +60,11 @@ export default function Index({ auth, folder, canMakeSheet, folders, sheets }) {
                     {folders.map(folder =>
                         <FolderCard key={folder.id} folder={folder} />
                     )}
-                    {sheets ? sheets.map(sheet =>
-                        <SheetCard key={sheet.id} sheet={sheet} />
+                    {sheets ? sheets.map(sheet => {
+                        return (
+                            <SheetCard key={sheet.id} sheet={sheet} />
+                        )
+                    }
                     ) : ''}
                 </div>
             </div>

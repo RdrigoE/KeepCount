@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $f = Folder::factory()->count(3)->make(['user_id' => $u]);
-        echo $f;
 
         foreach ($f as $key => $folder) {
             $s = Sheet::factory()->count(3)->make(['folder_id' => $folder]);

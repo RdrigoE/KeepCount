@@ -1,6 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/shadcn/ui/card";
-import { Link } from "lucide-react";
-import { FileIcon } from "./FileIcon";
+import { Card, CardHeader, CardTitle } from "@/shadcn/ui/card";
 
 export default function SheetCard({ sheet }) {
     return (
@@ -8,7 +6,7 @@ export default function SheetCard({ sheet }) {
             <Card>
                 <CardHeader>
                     <CardTitle>
-                        <FileIcon className="mr-2 h-5 w-5" />
+                        {/* <FileIcon className="mr-2 h-5 w-5" /> */}
                         {sheet.name}
                     </CardTitle>
                 </CardHeader>

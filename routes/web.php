@@ -42,9 +42,11 @@ Route::middleware('auth')->group(function () {
 Route::resource('folders', FolderController::class)
     ->only(['index', 'show', 'store'])
     ->middleware(['auth', 'verified']);
+
 Route::resource('sheets', SheetController::class)
     ->only(['index', 'show', 'store'])
     ->middleware(['auth', 'verified']);
+
 Route::resource('entries', EntryController::class)
     ->only(['index', 'show', 'store'])
     ->middleware(['auth', 'verified']);

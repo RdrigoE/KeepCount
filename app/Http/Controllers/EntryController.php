@@ -54,7 +54,16 @@ class EntryController extends Controller
      */
     public function edit(Entry $entry)
     {
-        //
+
+        $validated = request()->validate([
+            'item' => 'string|max:255|min:3',
+            'price' => 'required|numeric|between:1,99999999999999',
+            'quantity' => 'int',
+        ]);
+
+        $entry = $entry->update($validated);
+
+        return back();
     }
 
     /**
