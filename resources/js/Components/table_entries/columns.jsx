@@ -11,6 +11,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu"
+import { EditEntry } from "@/Pages/Entry/EditEntry"
 
 export const columns = [
     {
@@ -27,7 +28,7 @@ export const columns = [
                 currency: "EUR",
             }).format(amount)
 
-            return <div className="font-medium">{formatted}</div>
+            return <div key={row.id} className="font-medium">{formatted}</div>
         },
     },
     {
@@ -35,7 +36,7 @@ export const columns = [
         header: "Quantity",
     },
     {
-        accessorKey: "price",
+        accessorKey: "total",
         header: () => <div className="">Total</div>,
         cell: ({ row }) => {
             const amount = parseFloat(row.getValue("price")) * parseInt(row.getValue("quantity"))
@@ -44,17 +45,16 @@ export const columns = [
                 currency: "EUR",
             }).format(amount)
 
-            return <div className="font-medium">{formatted}</div>
+            return <div key={row.id} className="font-medium">{formatted}</div>
         },
     },
 
     {
         id: "actions",
+        header: () => <div className="">Actions</div>,
         cell: ({ row }) => {
-            const payment = row.original
-
             return (
-                <DropdownMenu>
+                <DropdownMenu key={row.id}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="h-8 w-8 p-0">
                             <span className="sr-only">Open menu</span>
@@ -63,14 +63,7 @@ export const columns = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                        // onClick={() => navigator.clipboard.writeText(payment.id)}
-                        >
-                            Copy payment ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View payment details</DropdownMenuItem>
+                        <EditEntry entry={row}/>
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

@@ -7,6 +7,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Button } from "@/shadcn/ui/button";
 import { Input } from "@/shadcn/ui/input";
 import { useForm } from '@inertiajs/react';
+import { EditEntry } from "../Entry/EditEntry";
 
 
 export default function Index({ auth, sheet, entries }) {
@@ -21,9 +22,7 @@ export default function Index({ auth, sheet, entries }) {
     const submit = (e) => {
         e.preventDefault();
         post(route('entries.store'), {
-            onSuccess: () => {
-                return reset()
-            }
+            onSuccess: () => reset()
         });
     };
 
@@ -44,7 +43,7 @@ export default function Index({ auth, sheet, entries }) {
                         />
                         <InputError message={errors.item} className="mt-2" />
 
-                        <Input className="w-full mb-4" placeholder="Quantity"
+                        <Input type="number" className="w-full mb-4" placeholder="Quantity"
                             value={data.quantity}
                             onChange={e => setData('quantity', e.target.value)}
                         />
@@ -69,11 +68,9 @@ export default function Index({ auth, sheet, entries }) {
                     </div>
                 </form>
                 <div>
-
                     <div className="container mx-auto py-10">
                         <DataTable columns={columns} data={entries} />
                     </div>
-
                 </div>
             </div>
         </AuthenticatedLayout >

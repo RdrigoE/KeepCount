@@ -1,4 +1,5 @@
-import { Card, CardHeader, CardTitle } from "@/shadcn/ui/card";
+import { Link } from "@inertiajs/react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/shadcn/ui/card";
 
 export default function SheetCard({ sheet }) {
     return (
