@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Entry;
 use App\Models\Sheet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class EntryController extends Controller
 {
@@ -71,7 +72,14 @@ class EntryController extends Controller
      */
     public function update(Request $request, Entry $entry)
     {
-        //
+        $validated = $request->validate([
+            'item' => 'string|max:255|min:3',
+            'price' => 'required|numeric|between:1,99999999999999',
+            'quantity' => 'int',
+            'sheet_id' => 'int'
+        ]);
+
+        $entry->update($validated);
     }
 
     /**

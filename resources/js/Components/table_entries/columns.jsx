@@ -63,7 +63,7 @@ export const columns = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <EditEntry entry={row}/>
+                        <EditEntry entry={row} />
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

@@ -2,6 +2,7 @@ import { Button } from "@/shadcn/ui/button";
 import { CheckIcon } from "@/Components/CheckIcon";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -13,17 +14,14 @@ import { Input } from "@/shadcn/ui/input";
 import { useForm } from "@inertiajs/react";
 import InputError from "@/Components/InputError";
 
-export function EditEntry({ entry }) {
-  const { data, setData, post, processing, reset, errors } = useForm({
-    ...entry,
+export function EditEntry({ entry, parentReset }) {
+  const { data, setData, patch, clearErrors, reset, errors } = useForm({
+    ...entry.original,
   });
-  console.log(data.original);
 
   const submit = (e) => {
     e.preventDefault();
-    post(route("entries.update", entry), {
-      onSuccess: () => reset(),
-    });
+    patch(route("entries.update", entry.original.id), { onSuccess: () => parentReset()}, );
   };
 
   return (

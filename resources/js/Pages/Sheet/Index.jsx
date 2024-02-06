@@ -69,7 +69,7 @@ export default function Index({ auth, sheet, entries }) {
                 </form>
                 <div>
                     <div className="container mx-auto py-10">
-                        <DataTable columns={columns} data={entries} />
+                        <DataTable columns={columns} data={entries}/>
                     </div>
                 </div>
             </div>
