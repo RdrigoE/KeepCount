@@ -13,29 +13,32 @@ import {
 import { Input } from "@/shadcn/ui/input";
 import { useForm } from "@inertiajs/react";
 import InputError from "@/Components/InputError";
+import { useState } from "react";
 
 export function EditEntry({ entry, parentReset }) {
   const { data, setData, patch, clearErrors, reset, errors } = useForm({
     ...entry.original,
   });
 
+  const [open, setOpen] = useState(false);
   const submit = (e) => {
     e.preventDefault();
-    patch(route("entries.update", entry.original.id), { onSuccess: () => parentReset()}, );
+    patch(route("entries.update", entry.original.id), 
+      { onSuccess: () => 
+      {
+        setOpen(false);
+      }}, );
   };
-
+  
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen} >
       <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
+        <Button variant="outline m-4">Edit Profile</Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your entry here. Click save when you're done.
-          </DialogDescription>
+          <DialogTitle>Edit Entry</DialogTitle>
         </DialogHeader>
         <form onSubmit={submit}>
           <Input
@@ -70,6 +73,6 @@ export function EditEntry({ entry, parentReset }) {
           </DialogFooter>
         </form>
       </DialogContent>
-    </Dialog>
+      </Dialog>
   );
 }

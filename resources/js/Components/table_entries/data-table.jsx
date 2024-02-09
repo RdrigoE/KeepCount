@@ -19,7 +19,7 @@ import {
 export function DataTable({
     columns,
     data,
-}) {
+    }) {
     const table = useReactTable({
         data,
         columns,
