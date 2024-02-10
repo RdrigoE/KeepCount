@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Entry;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EntryPolicy
@@ -24,7 +23,7 @@ class EntryPolicy
     {
         $authorized = $user->id == $entry->sheet->folder->user->id;
 
-        if ( ! $authorized){
+        if (!$authorized) {
             throw new NotFoundHttpException();
         }
 

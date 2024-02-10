@@ -22,9 +22,9 @@ class SheetPolicy
      */
     public function view(User $user, Sheet $sheet): bool
     {
-        $authorized = $user->id == $sheet->user->id;
+        $authorized = $user->id == $sheet->folder->user->id;
 
-        if ( ! $authorized){
+        if (!$authorized) {
             throw new NotFoundHttpException();
         }
 
@@ -52,7 +52,6 @@ class SheetPolicy
      */
     public function delete(User $user, Sheet $sheet): bool
     {
-
     }
 
     /**
