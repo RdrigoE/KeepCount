@@ -28,11 +28,13 @@ export default function Index({ auth, sheet, entries }) {
 
     return (
         <AuthenticatedLayout user={auth.user}>
-            <div className="w-full sm:w-1/2 mx-auto mt-10">
-                <form onSubmit={submit}>
+            <h1 className="w-full sm:w-1/2 mx-auto p-5 text-2xl text-center underline">
+                {sheet.name}
+            </h1>
+            <div className="w-full sm:w-1/2 mx-auto">
+                <form onSubmit={submit} className="px-5 mx-5 py-2 bg-gray-200 rounded-xl">
                     <div>
                         <div>
-                            <FolderPlusIcon className="mr-2 h-5 w-5" />
                             Create New Entry
                         </div>
                     </div>
@@ -59,10 +61,6 @@ export default function Index({ auth, sheet, entries }) {
                             <Button className="w-full bg-green-600" variant="solid" >
                                 <CheckIcon className="mr-2 h-5 w-5" />
                                 Create Entry
-                            </Button>
-                            <Button className="w-full bg-red-600" variant="solid" onClick={(e) => setCreatingFolder(false)}>
-                                <CheckIcon className="mr-2 h-5 w-5" />
-                                Cancel
                             </Button>
                         </div>
                     </div>

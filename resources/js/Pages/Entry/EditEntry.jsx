@@ -14,6 +14,7 @@ import { Input } from "@/shadcn/ui/input";
 import { useForm } from "@inertiajs/react";
 import InputError from "@/Components/InputError";
 import { useState } from "react";
+import { EditIcon } from "@/Components/EditIcon";
 
 export function EditEntry({ entry }) {
   const { data, setData, patch, clearErrors, reset, errors } = useForm({
@@ -23,15 +24,15 @@ export function EditEntry({ entry }) {
   const [open, setOpen] = useState(false);
   const submit = (e) => {
     e.preventDefault();
-    patch(route("entries.update", entry.original.id), 
-      { onSuccess: () => 
-      {
+    patch(route("entries.update", entry.original.id), {
+      onSuccess: () => {
         setOpen(false);
-      }}, );
+      },
+    });
   };
-  
+
   return (
-    <Dialog open={open} onOpenChange={setOpen} >
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline m-4">Edit Item</Button>
       </DialogTrigger>
@@ -67,12 +68,16 @@ export function EditEntry({ entry }) {
           <InputError message={errors.price} className="mt-2" />
 
           <DialogFooter>
-            <Button className="w-full bg-green-600" variant="solid" type="submit">
+            <Button
+              className="w-full bg-green-600"
+              variant="solid"
+              type="submit"
+            >
               Edit Entry
             </Button>
           </DialogFooter>
         </form>
       </DialogContent>
-      </Dialog>
+    </Dialog>
   );
 }

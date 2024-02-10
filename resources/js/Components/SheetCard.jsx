@@ -17,29 +17,30 @@ import { Button } from "@/shadcn/ui/button";
 import { MoreHorizontal } from "lucide-react";
 import { EditFolder } from "@/Pages/Folder/EditFolder";
 
-
 export default function SheetCard({ sheet }) {
   return (
-    <Card>
-      <DropdownMenu key={sheet.id}>
-        <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
-            <MoreHorizontal className="h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <EditSheet sheet={sheet} />
-          <Dropdown.Link
-            as="button"
-            href={route("sheets.destroy", sheet.id)}
-            method="delete"
-          >
-            Delete sheet
-          </Dropdown.Link>
-        </DropdownMenuContent>
-      </DropdownMenu>
+    <Card className="bg-green-200 relative">
+      <div className="absolute right-0">
+        <DropdownMenu key={sheet.id}>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <EditSheet sheet={sheet} />
+            <Dropdown.Link
+              as="button"
+              href={route("sheets.destroy", sheet.id)}
+              method="delete"
+            >
+              Delete sheet
+            </Dropdown.Link>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
       <Link href={route("sheets.show", sheet.id)}>
         <CardHeader>
           <CardTitle>

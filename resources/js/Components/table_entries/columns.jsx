@@ -73,8 +73,10 @@ export const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <EditEntry entry={row} />
-                <DeleteEntry entry={row} />
+            <div className="flex flex-col">
+              <EditEntry entry={row} />
+              <DeleteEntry entry={row} />
+            </div>
           </DropdownMenuContent>
         </DropdownMenu>
       );
