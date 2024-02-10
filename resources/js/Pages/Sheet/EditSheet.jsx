@@ -15,15 +15,15 @@ import { useForm } from "@inertiajs/react";
 import InputError from "@/Components/InputError";
 import { useState } from "react";
 
-export function EditEntry({ entry }) {
+export function EditSheet({ sheet }) {
   const { data, setData, patch, clearErrors, reset, errors } = useForm({
-    ...entry.original,
+    ...sheet,
   });
 
   const [open, setOpen] = useState(false);
   const submit = (e) => {
     e.preventDefault();
-    patch(route("entries.update", entry.original.id), 
+    patch(route("sheets.update", sheet.id), 
       { onSuccess: () => 
       {
         setOpen(false);
@@ -33,42 +33,25 @@ export function EditEntry({ entry }) {
   return (
     <Dialog open={open} onOpenChange={setOpen} >
       <DialogTrigger asChild>
-        <Button variant="outline m-4">Edit Item</Button>
+        <Button variant="outline m-4">Edit sheet</Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Entry</DialogTitle>
+          <DialogTitle>Edit sheet</DialogTitle>
         </DialogHeader>
         <form onSubmit={submit}>
           <Input
             className="w-full mb-4"
-            placeholder="Item"
-            value={data.item}
-            onChange={(e) => setData("item", e.target.value)}
+            placeholder="Name"
+            value={data.name}
+            onChange={(e) => setData("name", e.target.value)}
           />
-          <InputError message={errors.item} className="mt-2" />
-
-          <Input
-            type="number"
-            className="w-full mb-4"
-            placeholder="Quantity"
-            value={data.quantity}
-            onChange={(e) => setData("quantity", e.target.value)}
-          />
-          <InputError message={errors.quantity} className="mt-2" />
-
-          <Input
-            className="w-full mb-4"
-            placeholder="Price"
-            value={data.price}
-            onChange={(e) => setData("price", e.target.value)}
-          />
-          <InputError message={errors.price} className="mt-2" />
+          <InputError message={errors.name} className="mt-2" />
 
           <DialogFooter>
             <Button className="w-full bg-green-600" variant="solid" type="submit">
-              Edit Entry
+              Edit sheet
             </Button>
           </DialogFooter>
         </form>

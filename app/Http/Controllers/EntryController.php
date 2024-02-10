@@ -80,6 +80,8 @@ class EntryController extends Controller
         ]);
 
         $entry->update($validated);
+
+        return back();
     }
 
     /**
@@ -87,6 +89,9 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
-        //
+        $entry->delete();
+
+        info($entry);
+        return back();
     }
 }

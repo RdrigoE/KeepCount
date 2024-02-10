@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import { EditEntry } from "@/Pages/Entry/EditEntry";
+import { DeleteEntry } from "@/Pages/Entry/DeleteEntry";
 
 export const columns = [
   {
@@ -73,6 +74,7 @@ export const columns = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                 <EditEntry entry={row} />
+                <DeleteEntry entry={row} />
           </DropdownMenuContent>
         </DropdownMenu>
       );

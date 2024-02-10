@@ -40,15 +40,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('folders', FolderController::class)
-    ->only(['index', 'show', 'store', 'update'])
+    ->only(['index', 'show', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::resource('sheets', SheetController::class)
-    ->only(['index', 'show', 'store', 'update'])
+    ->only(['index', 'show', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::resource('entries', EntryController::class)
-    ->only(['index', 'show', 'store', 'update'])
+    ->only(['index', 'show', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
 

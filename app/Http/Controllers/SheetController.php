@@ -37,8 +37,7 @@ class SheetController extends Controller
 
         $sheet = Folder::find($validated['folder_id'])->sheets()->create($validated);
 
-
-        return $this->show($sheet);
+        return back();
     }
 
     /**
@@ -65,7 +64,14 @@ class SheetController extends Controller
      */
     public function update(Request $request, Sheet $sheet)
     {
-        //
+        $validated = request()->validate([
+            'name' => 'string|max:255|required',
+            'folder_id' => 'int|required',
+        ]);
+
+        $sheet->update($validated);
+
+        return back();
     }
 
     /**
@@ -73,6 +79,7 @@ class SheetController extends Controller
      */
     public function destroy(Sheet $sheet)
     {
-        //
+        $sheet->delete();
+        return back();
     }
 }

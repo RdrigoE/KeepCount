@@ -66,7 +66,6 @@ class FolderController extends Controller
      */
     public function edit(Folder $folder)
     {
-        //
     }
 
     /**
@@ -74,7 +73,13 @@ class FolderController extends Controller
      */
     public function update(Request $request, Folder $folder)
     {
-        //
+        $validated = request()->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $folder->update($validated);
+
+        return back();
     }
 
     /**
@@ -82,6 +87,8 @@ class FolderController extends Controller
      */
     public function destroy(Folder $folder)
     {
-        //
+        $folder->delete();
+
+        return back();
     }
 }
