@@ -45,6 +45,8 @@ class SheetController extends Controller
      */
     public function show(Sheet $sheet)
     {
+        $this->authorize('view', $sheet);
+
         return Inertia::render('Sheet/Index', [
             'sheet' => $sheet,
             'entries' => $sheet->entries
@@ -64,6 +66,8 @@ class SheetController extends Controller
      */
     public function update(Request $request, Sheet $sheet)
     {
+        $this->authorize('view', $sheet);
+
         $validated = request()->validate([
             'name' => 'string|max:255|required',
             'folder_id' => 'int|required',
@@ -79,7 +83,10 @@ class SheetController extends Controller
      */
     public function destroy(Sheet $sheet)
     {
+        $this->authorize('view', $sheet);
+
         $sheet->delete();
+
         return back();
     }
 }

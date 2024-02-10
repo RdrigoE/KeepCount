@@ -55,16 +55,7 @@ class EntryController extends Controller
      */
     public function edit(Entry $entry)
     {
-
-        $validated = request()->validate([
-            'item' => 'string|max:255|min:3',
-            'price' => 'required|numeric|between:1,99999999999999',
-            'quantity' => 'int',
-        ]);
-
-        $entry = $entry->update($validated);
-
-        return back();
+        //
     }
 
     /**
@@ -72,6 +63,8 @@ class EntryController extends Controller
      */
     public function update(Request $request, Entry $entry)
     {
+        $this->authorize('view', $entry);
+
         $validated = $request->validate([
             'item' => 'string|max:255|min:3',
             'price' => 'required|numeric|between:1,99999999999999',
@@ -89,6 +82,8 @@ class EntryController extends Controller
      */
     public function destroy(Entry $entry)
     {
+        $this->authorize('view', $entry);
+
         $entry->delete();
 
         info($entry);

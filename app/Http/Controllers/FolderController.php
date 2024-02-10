@@ -50,6 +50,8 @@ class FolderController extends Controller
      */
     public function show(Folder $folder)
     {
+        $this->authorize('view', $folder);
+
         return Inertia::render(
             'Folder/Index',
             [
@@ -73,6 +75,8 @@ class FolderController extends Controller
      */
     public function update(Request $request, Folder $folder)
     {
+        $this->authorize('view', $folder);
+
         $validated = request()->validate([
             'name' => 'required|string|max:255',
         ]);
@@ -87,6 +91,8 @@ class FolderController extends Controller
      */
     public function destroy(Folder $folder)
     {
+        $this->authorize('view', $folder);
+
         $folder->delete();
 
         return back();
